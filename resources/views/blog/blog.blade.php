@@ -28,7 +28,7 @@
                                     </a>
                                 </h3>
                                 <p class="t-mt-30 t-text-heading">
-                                    {{$post->content}}
+                                    {{$post->excerpt}}
                                 </p>
                             </div>
                             <div class="blog-post__footer t-pb-30 t-pt-20">
@@ -58,7 +58,7 @@
                                     <li class="blog-post__footer-list t-mb-15 t-mr-15">
                                         <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                             <i class="las la-clock"></i>
-                                            8 min read
+                                            (8 min read)
                                         </a>
                                     </li>
                                 </ul>
