@@ -11,13 +11,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $all_posts = DB::table('posts')->get();
-        return view('pages.blog', [
-            'posts' => $all_posts
-        ]);
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -52,16 +46,16 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
         $insert_post = DB::table('posts')->insert([
-            'title'=> 'Hello World',
-            'thumbnail'=> 'http://localhost:8000/assets/img/project-img-2.png',
+            'title'=> 'Hello World-3',
+            'thumbnail'=> 'http://localhost:8000/assets/img/project-img-1.png',
             'excerpt' => 'this is excerpt',
-            'content' =>'Chances are good that there’s a cloud software as a service solution on the market           that      will your core back-office needs. Many of those products offer the potential not just to move your data and processes.',
-            'time' =>'2024-05-20',
+            'content' =>'Chances are good that theres a cloud software as a service solution on the market           that      will your core back-office needs. Many of those products offer the potential not just to move your data and processes.',
             'user_id' =>'100',
-            'slug' => 'Hello-world'
+            'views' =>'100',
+            'slug' => 'Hello-World-3'
         ]);
 
         if($insert_post){

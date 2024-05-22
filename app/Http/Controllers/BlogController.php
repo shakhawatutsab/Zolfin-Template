@@ -7,8 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
-    public function blog(){
-        return view('pages.blog');
+    public function index()
+    {
+        $all_posts = DB::table('posts')->get();
+
+        return view('pages.blog',[
+            'posts' => $all_posts
+       ]);
     }
     public function blog2(){
         return view('pages.blog-2');

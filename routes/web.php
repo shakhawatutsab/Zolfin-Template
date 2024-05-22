@@ -23,7 +23,7 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 // Portfolio Controller End
 
 // Post Controller Start
-Route::get('/blog', [PostController::class,'index']);
+// Route::get('/blog', [PostController::class,'index']);
 Route::get('/posts', [PostController::class,'post']);
 Route::get('/delete', [PostController::class,'destroy']);
 Route::get('/insert-data', [PostController::class,'edit']);
@@ -31,9 +31,10 @@ Route::get('/truncate', [PostController::class,'update']);
 // Post Controller End
 
 //Blog Controller Start
-Route::get('/blog', [BlogController::class,'blog']);
+Route::get('/blog', [BlogController::class,'index']);
 Route::get('/blog-2', [BlogController::class,'blog2']);
 Route::get('/blog-details', [BlogController::class,'blog_details']);
+Route::get('/article/{slug}',[BlogController::class,'single'])->name('single-post');
 // Blog Controller End
 
 // About Controller
@@ -50,7 +51,7 @@ Route::get('/service-details', [ServiceController::class,'service_details']);
 Route::get('/team', [ServiceController::class,'team']);
 // Service Controller End
 
-Route::get('/article/{slug}',[BlogController::class,'single'])->name('single-post');
+
 
 
 
