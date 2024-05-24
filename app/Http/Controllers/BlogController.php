@@ -9,10 +9,11 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $all_posts = DB::table('posts')->get();
+        $all_posts = DB::table('posts')->paginate(5);
 
         return view('pages.blog',[
-            'posts' => $all_posts
+            'posts' => $all_posts,
+            'title' =>'Blog'
        ]);
     }
     public function blog2(){
@@ -25,7 +26,7 @@ class BlogController extends Controller
         $single_post = DB::table('posts')->where('slug', $slug)->first();
 
         return view('blog-details', [
-        'data' => $single_post
-    ]);
+            'data' => $single_post
+       ]);
     }
 }

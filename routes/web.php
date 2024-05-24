@@ -8,9 +8,10 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\LoginController;
 
 // Home Controller Start
-Route::get('/', [HomeController::class,'index']);
+Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/home-2', [HomeController::class,'home2']);
 Route::get('/home-3', [HomeController::class,'home3']);
 Route::get('/home-4', [HomeController::class,'home4']);
@@ -31,7 +32,7 @@ Route::get('/truncate', [PostController::class,'update']);
 // Post Controller End
 
 //Blog Controller Start
-Route::get('/blog', [BlogController::class,'index']);
+Route::get('/blog', [BlogController::class,'index'])->name('blog');
 Route::get('/blog-2', [BlogController::class,'blog2']);
 Route::get('/blog-details', [BlogController::class,'blog_details']);
 Route::get('/article/{slug}',[BlogController::class,'single'])->name('single-post');
@@ -50,6 +51,11 @@ Route::get('/process', [ServiceController::class,'process']);
 Route::get('/service-details', [ServiceController::class,'service_details']);
 Route::get('/team', [ServiceController::class,'team']);
 // Service Controller End
+
+// Login Controller Starts
+Route::get('/register', [LoginController::class,'register']);
+Route::post('/register', [LoginController::class,'registerPost'])->name('registration');
+// Login Controller End
 
 
 

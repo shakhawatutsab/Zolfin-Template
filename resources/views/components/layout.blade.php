@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Zolfin - Multipurpose Agency Template</title>
+        <title>Plugin Magnet</title>
 
         <!-- favicon -->
         <link
@@ -379,7 +379,7 @@
                             <a href="#" class="t-link t-link-alpha">
                                 <i class="las la-heart"></i>
                             </a>
-                            SoftTech-IT
+                            Plugin Magnet
                         </div>
                         <div class="col-md-4">
                             <ul

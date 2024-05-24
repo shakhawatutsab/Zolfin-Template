@@ -9,7 +9,7 @@
                     <div class="col-12 t-mb-50">
                         <div class="blog-post border">
                             <div class="blog-post__img">
-                                <a href="#" class="t-link blog-post__img-link w-100">
+                                <a href="{{route('single-post', $post->slug)}}" class="t-link blog-post__img-link w-100">
                                     <img src="{{$post->thumbnail}}" class="w-100 img-fluid">
                                 </a>
                                 <span class="blog-post__date d-flex flex-column align-items-center justify-content-center">
@@ -24,7 +24,7 @@
                             <div class="blog-post__body">
                                 <h3 class="blog-post__title">
                                     <a href="{{route('single-post', $post->slug)}}" class="t-link t-link--alpha blog-post__title-link">
-                                        {{$post->title}}
+                                        {{$post->id}}.{{$post->title}}
                                     </a>
                                 </h3>
                                 <p class="t-mt-30 t-text-heading">
@@ -69,28 +69,7 @@
                     @endforeach
 
                     <div class="col-12">
-                        <ul class="t-list zol-pagination d-flex flex-wrap">
-                            <li class="zol-pagination__list">
-                                <a href="#" class="t-link zol-pagination__card active">
-                                    1
-                                </a>
-                            </li>
-                            <li class="zol-pagination__list">
-                                <a href="#" class="t-link zol-pagination__card">
-                                    2
-                                </a>
-                            </li>
-                            <li class="zol-pagination__list">
-                                <a href="#" class="t-link zol-pagination__card">
-                                    3
-                                </a>
-                            </li>
-                            <li class="zol-pagination__list">
-                                <a href="#" class="t-link zol-pagination__card">
-                                    4
-                                </a>
-                            </li>
-                        </ul>
+                        {{$posts->links('vendor.pagination.bootstrap-4')}}
                     </div>
                 </div>
             </div>
