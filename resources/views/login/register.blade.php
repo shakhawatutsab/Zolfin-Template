@@ -12,7 +12,7 @@
                 </h2>
                 <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
                     <li class="breadcrumbs__list">
-                        <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                        <a href="{{route('home')}}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                             home
                         </a>
                     </li>
@@ -34,29 +34,31 @@
             <div class="col-lg-10 col-xl-8">
                 <div class="row">
                     <div class="col">
-                        <form method="POST" action="{{route('registration')}}">
+                        <form method="post" action="{{route('registration')}}">
 
                             @csrf
-
+                            @if(@session()->has('message') )
+                            <div class="alert alert-success">{{session('message')}}</div>
+                            @endif
                             <h4>Creat an account</h4>
                             <hr>
                             <div class="mb-3">
-                                <input type="text" class="form-controll" placeholder="full name">
+                                <input type="text" name="name" class="form-controll" placeholder="full name">
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" class="form-controll" placeholder="User name">
+                                <input type="text" name="username" class="form-controll" placeholder="User name">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-controll" placeholder="photo url">
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="email" class="form-controll" placeholder="Email address">
+                                <input type="text" name="photo" class="form-controll" placeholder="photo url">
                             </div>
 
                             <div class="mb-3">
-                                <input type="password" class="form-controll" placeholder="password">
+                                <input type="email" name="email" class="form-controll" placeholder="Email address">
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="password" name="password" class="form-controll" placeholder="password">
                             </div>
 
                             <div class="mb-3">
