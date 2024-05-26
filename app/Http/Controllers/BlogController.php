@@ -25,6 +25,7 @@ class BlogController extends Controller
     public function single($slug){
         $single_post = DB::table('posts')->where('slug', $slug)->first();
 
+
         return view('blog-details', [
             'data' => $single_post
        ]);

@@ -24,7 +24,7 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 // Portfolio Controller End
 
 // Post Controller Start
-// Route::get('/blog', [PostController::class,'index']);
+Route::get('/blog', [PostController::class,'index']);
 Route::get('/posts', [PostController::class,'post']);
 Route::get('/delete', [PostController::class,'destroy']);
 Route::get('/insert-data', [PostController::class,'edit']);

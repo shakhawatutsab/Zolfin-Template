@@ -19,15 +19,17 @@ class PostSeeder extends Seeder
     {
 
         $faker = Factory::create();
-        for($i = 0; $i < 5; $i++){
+        for($i = 0; $i < 10; $i++){
             post::create([
                 'title'=> $faker->realText(30),
                 'thumbnail'=> $faker->imageUrl(1000,600),
                 'excerpt' => $faker->paragraph(),
                 'content' =>$faker->text(500),
                 'user_id' =>$faker->numberBetween(1,5),
-                'views' =>$faker->numberBetween(1,5),
-                'slug' => $faker->slug()
+                'views' =>$faker->numberBetween(100,4000),
+                'slug' => $faker->slug(),
+                'created_at' =>Carbon::now()->format('Y-m-d h:i:s'),
+                'updated_at' =>Carbon::now()->format('Y-m-d h:i:s')
               ]);
             }
 
