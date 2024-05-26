@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class LoginController extends Controller
 {
     public function register(){
-        return view("login.register", [
+        return view("authentication.register", [
             "title"=> "Register",
         ]);
     }
@@ -27,5 +27,10 @@ class LoginController extends Controller
 
         return redirect('/register')->with('message','Registration successful');
 
+    }
+    public function login(){
+        return view('authentication.login',[
+            'title'=>'login'
+        ]);
     }
 }

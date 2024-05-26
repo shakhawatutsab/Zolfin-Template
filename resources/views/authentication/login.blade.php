@@ -34,7 +34,7 @@
             <div class="col-lg-10 col-xl-8">
                 <div class="row">
                     <div class="col">
-                        <form method="post" action="{{route('registration')}}">
+                        <form class="text-center" method="post" action="{{route('loginProcess')}}">
 
                             @csrf
 
@@ -49,21 +49,11 @@
                             @if(@session()->has('message') )
                             <div class="alert alert-success">{{session('message')}}</div>
                             @endif
-                            <h4>Creat an account</h4>
+                            <h4>Log in</h4>
                             <hr>
-                            <div class="mb-3">
-                                <input type="text" name="name" class="form-controll" placeholder="full name">
-                            </div>
 
                             <div class="mb-3">
-                                <input type="text" name="username" class="form-controll" placeholder="User name">
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" name="photo" class="form-controll" placeholder="photo url">
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-controll" placeholder="Email address">
+                                <input value="{{old('email')}}" type="email" name="email" class="form-controll" placeholder="Email address">
                             </div>
 
                             <div class="mb-3">
@@ -71,7 +61,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" class="btn btn-primary" value="create account">
+                                <input type="submit" class="btn btn-primary" value="Sign in">
                             </div>
                         </form>
                     </div>
@@ -80,6 +70,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection
