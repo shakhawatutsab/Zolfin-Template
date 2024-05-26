@@ -15,14 +15,15 @@ class LoginController extends Controller
     }
     public function registerPost(Request $request){
 
-        $user = User::create([
-            "name"=> $request->name,
-            "username"=> $request->username,
-            "photo" => $request->photo,
-            "email"=> $request->email,
-            "password"=> bcrypt($request->password),
-
+        $info = $request->validate([
+            "name" =>"required|max:300",
+            "username" => "required",
+            "photo"=>"required",
+            "password" =>"required|min:8",
+            "email"=> "required|email|unique:users",
         ]);
+
+        $user = User::create($info);
 
         return redirect('/register')->with('message','Registration successful');
 
