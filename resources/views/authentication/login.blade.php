@@ -12,12 +12,12 @@
                 </h2>
                 <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
                     <li class="breadcrumbs__list">
-                        <a href="{{route('home')}}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                        <a href="{{route('login')}}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                             home
                         </a>
                     </li>
                     <li class="breadcrumbs__list">
-                        <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                        <a href="{{route('loginProcess')}}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                             {{$title}}
                         </a>
                     </li>
@@ -41,15 +41,20 @@
                             @if ($errors->any())
 
                                 @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger">{{$error}}</div>
+                                    <div class="alert alert-danger">{{ $error }}</div>
                                 @endforeach
 
+                            @endif
+
+                            @if(@session()->has('invalid') )
+                            <div class="alert alert-danger">{{session('invalid')}}</div>
                             @endif
 
                             @if(@session()->has('message') )
                             <div class="alert alert-success">{{session('message')}}</div>
                             @endif
-                            <h4>Log in</h4>
+
+                            <h4>Login</h4>
                             <hr>
 
                             <div class="mb-3">
@@ -61,7 +66,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" class="btn btn-primary" value="Sign in">
+                                <input type="submit" class="btn btn-primary" value="Sign In">
                             </div>
                         </form>
                     </div>
@@ -70,4 +75,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

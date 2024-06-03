@@ -24,7 +24,7 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 // Portfolio Controller End
 
 // Post Controller Start
-Route::get('/blog', [PostController::class,'index']);
+// Route::get('/blog', [PostController::class,'index']);
 Route::get('/posts', [PostController::class,'post']);
 Route::get('/delete', [PostController::class,'destroy']);
 Route::get('/insert-data', [PostController::class,'edit']);
@@ -53,12 +53,17 @@ Route::get('/team', [ServiceController::class,'team']);
 // Service Controller End
 
 // Login Controller Starts
-Route::get('/register', [LoginController::class,'register'])->name('register');
-Route::post('/register', [LoginController::class,'registerPost'])->name('registerProcess');
+Route::get('/register', [LoginController::class,'register'])->name('register')->middleware('guest');
+Route::post('/register', [LoginController::class,'registerPost'])->name('registration');
 
-Route::get('login', [LoginController::class,'login'])->name('login');
-Route::post('login', [LoginController::class,'loginPost'])->name('loginProcess');
+Route::get('/login',[LoginController::class,'login'])->name('login')->middleware('guest');
+Route::post('login',[LoginController::class,'loginPost'])->name('loginProcess');
+
+Route::get('/dashboard',[LoginController::class,'dashboard'])->name('dashboard')->middleware('auth');
+
+Route::post('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End
+
 
 
 

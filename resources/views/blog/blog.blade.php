@@ -14,10 +14,10 @@
                                 </a>
                                 <span class="blog-post__date d-flex flex-column align-items-center justify-content-center">
                                     <span class="blog-post__date-day d-block">
-                                        {{ date('d', strtotime( $post->created_at )) }}
+                                        25
                                     </span>
                                     <span class="blog-post__date-month text-capitalize d-block">
-                                        {{ date('F', strtotime( $post->created_at )) }}
+                                        august
                                     </span>
                                 </span>
                             </div>
@@ -52,13 +52,13 @@
                                     <li class="blog-post__footer-list t-mb-15 t-mr-15">
                                         <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                             <i class="las la-calendar"></i>
-                                            {{ date('d F', strtotime( $post->created_at )) }}
+                                            25 october
                                         </a>
                                     </li>
                                     <li class="blog-post__footer-list t-mb-15 t-mr-15">
                                         <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                             <i class="las la-clock"></i>
-                                            {{$post->views}}
+                                            (8 min read)
                                         </a>
                                     </li>
                                 </ul>

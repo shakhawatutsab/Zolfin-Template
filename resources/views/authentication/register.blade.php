@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="breadcrumbs__list">
-                        <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                        <a href="{{route('register')}}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                             {{$title}}
                         </a>
                     </li>
@@ -34,41 +34,63 @@
             <div class="col-lg-10 col-xl-8">
                 <div class="row">
                     <div class="col">
-                        <form class="text-center" method="post" action="{{route('registerProcess')}}">
+                        <form class="text-center" method="post" action="{{route('registration')}}">
 
                             @csrf
 
                             @if ($errors->any())
 
-                                @foreach ($errors->all() as $error)
-                                <div class="alert alert-danger">{{$error}}</div>
-                                @endforeach
+                                {{-- @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger">{{ $error }}</div>
+                                @endforeach --}}
 
                             @endif
 
                             @if(@session()->has('message') )
                             <div class="alert alert-success">{{session('message')}}</div>
                             @endif
+
                             <h4>Creat an account</h4>
                             <hr>
                             <div class="mb-3">
                                 <input value="{{old('name')}}" type="text" name="name" class="form-controll" placeholder="full name">
                             </div>
 
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                             <div class="mb-3">
                                 <input value="{{old('username')}}" type="text" name="username" class="form-controll" placeholder="User name">
                             </div>
+
+                            @error('username')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                             <div class="mb-3">
                                 <input value="{{old('photo')}}" type="text" name="photo" class="form-controll" placeholder="photo url">
                             </div>
+
+                            @error('photo')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
 
                             <div class="mb-3">
                                 <input value="{{old('email')}}" type="email" name="email" class="form-controll" placeholder="Email address">
                             </div>
 
+                            @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
                             <div class="mb-3">
                                 <input type="password" name="password" class="form-controll" placeholder="password">
                             </div>
+
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
 
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-primary" value="create account">
@@ -80,4 +102,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection
