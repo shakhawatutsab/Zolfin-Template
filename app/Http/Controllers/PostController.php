@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
@@ -21,10 +23,10 @@ class PostController extends Controller
         //
     }
     public function post(){
-        $all_posts = DB::table('posts')->get();
+        $posts = Post::paginate(10);
 
-        return view('pages.blog',[
-            'posts' => $all_posts
+        return view('admin.posts',[
+            'posts' => $posts
        ]);
     }
     /**

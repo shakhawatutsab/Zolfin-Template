@@ -179,11 +179,18 @@
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
 
-        @section('admin.left-sidemenu')
-
 
 
         @yield('content')
+
+        <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Plugin Magnet 2024</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
 
 
 

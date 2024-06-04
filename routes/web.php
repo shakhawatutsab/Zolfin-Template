@@ -25,7 +25,7 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 
 // Post Controller Start
 // Route::get('/blog', [PostController::class,'index']);
-Route::get('/posts', [PostController::class,'post']);
+Route::get('/admin/posts', [PostController::class,'post'])->name('admin-posts');
 Route::get('/delete', [PostController::class,'destroy']);
 Route::get('/insert-data', [PostController::class,'edit']);
 Route::get('/truncate', [PostController::class,'update']);

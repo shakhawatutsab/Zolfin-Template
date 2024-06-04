@@ -14,10 +14,10 @@
                                 </a>
                                 <span class="blog-post__date d-flex flex-column align-items-center justify-content-center">
                                     <span class="blog-post__date-day d-block">
-                                        25
+                                        {{date('d',strtotime($post->created_at))}}
                                     </span>
                                     <span class="blog-post__date-month text-capitalize d-block">
-                                        august
+                                        {{date('F',strtotime($post->created_at))}}
                                     </span>
                                 </span>
                             </div>
