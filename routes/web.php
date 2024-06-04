@@ -61,7 +61,7 @@ Route::post('login',[LoginController::class,'loginPost'])->name('loginProcess');
 
 Route::get('/dashboard',[LoginController::class,'dashboard'])->name('dashboard')->middleware('auth');
 
-Route::post('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
+Route::get('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End
 
 
