@@ -12,7 +12,19 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">All Posts</h4>
+
+            <div class="row">
+                <div class="col">
+                    <h2 class="card-title">All Posts</h2>
+                </div>
+                <div class="col">
+                    <form class="ml-auto search-form d-none d-md-block" method="GET" action="{{route('admin-posts')}}">
+                        <div class="form-group">
+                          <input class="input-group input-group-lg" value="{{ $keyword }}" name="search" type="search" class="form-control" placeholder="Search From Posts">
+                        </div>
+                    </form>
+                </div>
+            </div>
 
               <table class="table table-striped mb-5">
                 <thead>

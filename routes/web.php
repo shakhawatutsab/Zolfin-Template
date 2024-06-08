@@ -61,6 +61,11 @@ Route::post('login',[LoginController::class,'loginPost'])->name('loginProcess');
 
 Route::get('/dashboard',[LoginController::class,'dashboard'])->name('dashboard')->middleware('auth');
 
+Route::get('/search-post', function (){
+    return view('admin.search-post');
+});
+
+
 Route::get('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End
 

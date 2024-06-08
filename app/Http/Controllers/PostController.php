@@ -23,10 +23,17 @@ class PostController extends Controller
         //
     }
     public function post(){
-        $posts = Post::paginate(10);
+
+        $keyword = request('search');
+
+        $posts = Post::where('title','LIKE', '%'.$keyword.'%')
+            ->orWhere('excerpt','LIKE', '%'.$keyword.'%')
+            ->orWhere('content','LIKE', '%'.$keyword.'%')
+            ->paginate(10);
 
         return view('admin.posts',[
-            'posts' => $posts
+            'posts' => $posts,
+            'keyword'=> $keyword
        ]);
     }
     /**
