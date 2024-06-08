@@ -35,8 +35,8 @@
                     <th> Post Categories </th>
                     <th> Post Author </th>
                     <th> Total View </th>
-                    <th> Published on </th>
                     <th> Updated on </th>
+                    <th> <> </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,8 +51,8 @@
                     <td> {{$post->title}} </td>
                     <td> {{$post->slug}} </td>
                     <td> {{$post->views}} </td>
-                    <td> {{$post->created_at}} </td>
-                    <td> {{$post->updated_at}} </td>
+                    <td> {{date('F d,Y',strtotime($post->updated_at))}} </td>
+                    <td><a class="btn btn-info" href="{{route('admin-edit-post',$post->id)}}">Edit</a></td>
                   </tr>
                 </tbody>
                 @endforeach

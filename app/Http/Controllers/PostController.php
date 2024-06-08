@@ -55,21 +55,9 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Post $post)
     {
-        $insert_post = DB::table('posts')->insert([
-            'title'=> 'Hello World-3',
-            'thumbnail'=> 'http://localhost:8000/assets/img/project-img-1.png',
-            'excerpt' => 'this is excerpt',
-            'content' =>'Chances are good that theres a cloud software as a service solution on the market           that      will your core back-office needs. Many of those products offer the potential not just to move your data and processes.',
-            'user_id' =>'100',
-            'views' =>'100',
-            'slug' => 'Hello-World-3'
-        ]);
-
-        if($insert_post){
-            return 'data has been inserted to database';
-        }
+        return view('admin.edit');
     }
 
     /**
