@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
     {
 
         $faker = Factory::create();
-        for($i = 0; $i < 5; $i++){
+        for($i = 0; $i < 20; $i++){
             post::create([
                 'title'=> $faker->realText(30),
                 'thumbnail'=> $faker->imageUrl(1000,600),

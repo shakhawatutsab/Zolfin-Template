@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
-
 use App\Models\Post;
+use App\Models\Category;
+
 
 class PostController extends Controller
 {
@@ -57,16 +57,24 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.edit');
+
+        $categories = Category::all();
+
+        return view('admin.edit-post',[
+            'post' =>$post,
+            'categories' => $categories,
+            'cat' => $post-> category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update()
+    public function update(Request $request, Post $post)
     {
-        DB::table('posts')->truncate();
-        echo "All data has been deleted";
+        $post->update($request->all() );
+
+        return back()->with('message', 'post updated successfully!');
     }
 
     /**
@@ -74,10 +82,6 @@ class PostController extends Controller
      */
     public function destroy()
     {
-        $post_id =20;
-        DB::table("posts")
-        ->where('id',$post_id)
-        ->delete();
-        echo 'data has been deleted';
+
     }
 }

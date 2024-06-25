@@ -27,8 +27,9 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 // Route::get('/blog', [PostController::class,'index']);
 Route::get('/admin/posts', [PostController::class,'post'])->name('admin-posts');
 Route::get('/delete', [PostController::class,'destroy']);
+
 Route::get('/admin/post/edit/{post}', [PostController::class,'edit'])->name('admin-edit-post');
-Route::get('/truncate', [PostController::class,'update']);
+Route::put('/admin/post/update/{post}', [PostController::class,'update'])->name('admin-update-post');
 // Post Controller End
 
 //Blog Controller Start
@@ -65,15 +66,5 @@ Route::get('/search-post', function (){
     return view('admin.search-post');
 });
 
-
 Route::get('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End
-
-
-
-
-
-
-
-
-
