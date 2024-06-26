@@ -9,7 +9,7 @@
     <div class="content-wrapper">
       <div class="row">
         <div class="card-body">
-            @if (session()->has('message'))
+            @if (session()->has('message '))
             <div class="alert alert-success">{{session('message')}}</div>
             @endif
             <h4 class="card-title">Edit Post</h4>

@@ -30,6 +30,7 @@ Route::get('/delete', [PostController::class,'destroy']);
 
 Route::get('/admin/post/edit/{post}', [PostController::class,'edit'])->name('admin-edit-post');
 Route::put('/admin/post/update/{post}', [PostController::class,'update'])->name('admin-update-post');
+Route::delete('/admin/post/delete/{post}', [PostController::class, 'delete'])->name('admin-post-delete');
 // Post Controller End
 
 //Blog Controller Start

@@ -12,7 +12,9 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-
+                @if(session()->get('message'))
+                    <div class="alert alert-danger text-center">{{session('message')}}</div>
+                @endif
             <div class="row">
                 <div class="col">
                     <h2 class="card-title">All Posts</h2>
@@ -52,7 +54,14 @@
                     <td> {{$post->slug}} </td>
                     <td> {{$post->views}} </td>
                     <td> {{date('F d,Y',strtotime($post->updated_at))}} </td>
-                    <td><a class="btn btn-info" href="{{route('admin-edit-post',$post->id)}}">Edit</a></td>
+                    <td>
+                        <a class="btn btn-info" href="{{route('admin-edit-post',$post->id)}}">Edit</a>
+                        <form method="POST"action="{{route('admin-post-delete',$post->id)}} ">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
                   </tr>
                 </tbody>
                 @endforeach
