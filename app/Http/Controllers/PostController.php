@@ -20,7 +20,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.create-post',[
+            'categories' => $categories
+        ]);
     }
     public function post(){
 
@@ -29,7 +32,7 @@ class PostController extends Controller
         $posts = Post::where('title','LIKE', '%'.$keyword.'%')
             ->orWhere('excerpt','LIKE', '%'.$keyword.'%')
             ->orWhere('content','LIKE', '%'.$keyword.'%')
-            ->paginate(10);
+            ->orderBy('id','desc')->paginate(10);
 
         return view('admin.posts',[
             'posts' => $posts,
@@ -41,7 +44,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'title' =>'required',
+            'thumbnail' => 'required',
+            'excerpt' => 'required',
+            'content' => 'required',
+        ]);
+
+        $request['slug'] = implode( explode('-',$request->title));
+        $request['user_id'] = auth()->user()->id;
+        $request['views'] =0;
+
+        Post::create( $request->all() );
+
+        return redirect()->route('admin-posts')->with('message','Post published!');
+
     }
 
     /**

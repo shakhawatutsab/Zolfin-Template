@@ -32,7 +32,7 @@
                     <a class="nav-link" href="{{route('admin-posts')}}">All posts</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Create new posts</a>
+                    <a class="nav-link" href="{{route('admin-create-post')}}">Create new posts</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="pages/ui-features/typography.html">Categories</a>
