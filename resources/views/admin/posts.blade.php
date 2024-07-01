@@ -13,7 +13,7 @@
           <div class="card">
             <div class="card-body">
                 @if(session()->get('message'))
-                    <div class="alert alert-danger text-center">{{session('message')}}</div>
+                    <div class="alert alert-successs">{{session('message')}}</div>
                 @endif
             <div class="row">
                 <div class="col">

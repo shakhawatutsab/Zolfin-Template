@@ -9,7 +9,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\LoginController;
-
 // Home Controller Start
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/home-2', [HomeController::class,'home2']);
@@ -66,6 +65,5 @@ Route::get('/dashboard',[LoginController::class,'dashboard'])->name('dashboard')
 Route::get('/search-post', function (){
     return view('admin.search-post');
 });
-
 Route::get('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End

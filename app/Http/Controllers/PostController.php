@@ -22,21 +22,24 @@ class PostController extends Controller
     {
         $categories = Category::all();
         return view('admin.create-post',[
-            'categories' => $categories
+            'categories' => $categories,
+            'title' => "Create new post"
         ]);
     }
     public function post(){
 
         $keyword = request('search');
+        $title = "All Posts";
 
         $posts = Post::where('title','LIKE', '%'.$keyword.'%')
             ->orWhere('excerpt','LIKE', '%'.$keyword.'%')
             ->orWhere('content','LIKE', '%'.$keyword.'%')
-            ->orderBy('id','desc')->paginate(10);
+            ->orderBy('id','asc')->paginate(5);
 
         return view('admin.posts',[
             'posts' => $posts,
-            'keyword'=> $keyword
+            'keyword'=> $keyword,
+            'title' => $title
        ]);
     }
     /**
@@ -80,7 +83,8 @@ class PostController extends Controller
         return view('admin.edit-post',[
             'post' =>$post,
             'categories' => $categories,
-            'cat' => $post-> category
+            'cat' => $post-> category,
+
         ]);
     }
 
@@ -89,6 +93,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        dd($request->all());
         $post->update($request->all() );
 
         return back()->with('message', 'post updated successfully!');
