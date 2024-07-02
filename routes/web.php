@@ -9,6 +9,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\LoginController;
+
 // Home Controller Start
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/home-2', [HomeController::class,'home2']);
@@ -25,7 +26,7 @@ Route::get('/portfolio-details', [PortfolioController::class,'portfolio_details'
 // Post Controller Start
 // Route::get('/blog', [PostController::class,'index']);
 Route::get('/admin/posts', [PostController::class,'post'])->name('admin-posts');
-Route::post('/admin/post/stote',[PostController::class,'store'])->name('admin-create-store');
+Route::post('/admin/post/store',[PostController::class,'store'])->name('admin-create-store');
 Route::get('/admin/post/create', [PostController::class,'create'])->name('admin-create-post');
 Route::get('/admin/post/edit/{post}', [PostController::class,'edit'])->name('admin-edit-post');
 Route::put('/admin/post/update/{post}', [PostController::class,'update'])->name('admin-update-post');
@@ -67,3 +68,18 @@ Route::get('/search-post', function (){
 });
 Route::get('logout',[LoginController::class,'signout'])->name('logout')->middleware('auth');
 // Login Controller End
+
+
+Route::get('/upload-image', function(){
+    return view('upload-image');
+});
+Route::post('/upload-image', function(Request $request){
+
+    $image = $request->file("thumbnail");
+
+    $image_name = $image->hashName();
+
+    $image->storeAs('/public/image', $image_name);
+
+    return 'Image upload successfully done!!';
+})->name('upload-image');

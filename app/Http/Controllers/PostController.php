@@ -93,7 +93,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        dd($request->all());
         $post->update($request->all() );
 
         return back()->with('message', 'post updated successfully!');
