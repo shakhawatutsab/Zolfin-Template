@@ -34,7 +34,7 @@ class PostController extends Controller
         $posts = Post::where('title','LIKE', '%'.$keyword.'%')
             ->orWhere('excerpt','LIKE', '%'.$keyword.'%')
             ->orWhere('content','LIKE', '%'.$keyword.'%')
-            ->orderBy('id','asc')->paginate(5);
+            ->orderBy('id','desc')->paginate(10);
 
         return view('admin.posts',[
             'posts' => $posts,
@@ -49,16 +49,27 @@ class PostController extends Controller
     {
         $request -> validate([
             'title' =>'required',
-            'thumbnail' => 'required',
+            'thumbnail' => 'required|image|mimes:jpg,bmp,png',
             'excerpt' => 'required',
             'content' => 'required',
         ]);
 
-        $request['slug'] = implode( explode('-',$request->title));
-        $request['user_id'] = auth()->user()->id;
-        $request['views'] =0;
+        $post = new Post();
 
-        Post::create( $request->all() );
+        $post->title = $request->title;
+        $post->slug = implode( explode('-',$request->title)).'-'.time();
+        $post->excerpt = $request->excerpt;
+        $post->content = $request->content;
+
+        $image_name = $request->file('thumbnail')->getClientOriginalName();
+        $request->file('thumbnail')->storeAs('public/image', $image_name);
+
+        $post->thumbnail = $image_name;
+        $post->user_id = auth()->user()->id;
+        $post->views = 0;
+        $post->category_id = $request->category_id;
+
+        $post->save();
 
         return redirect()->route('admin-posts')->with('message','Post published!');
 

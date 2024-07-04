@@ -26,6 +26,7 @@ class CategorySeeder extends Seeder
                 'thumbnail'=> $faker->imageUrl(1000,600),
                 'excerpt' => $faker->paragraph(),
                 'content' =>$faker->text(500),
+                'category_id'=> $faker->country(),
                 'user_id' =>$faker->numberBetween(1,5),
                 'views' =>$faker->numberBetween(1,5),
                 'slug' => $faker->slug()

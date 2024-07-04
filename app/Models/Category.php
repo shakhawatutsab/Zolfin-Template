@@ -14,6 +14,7 @@ class Category extends Model
         'slug',
         'thumbnail',
         'content',
+        'category_id',
         'excerpt',
         'user_id',
         'views'

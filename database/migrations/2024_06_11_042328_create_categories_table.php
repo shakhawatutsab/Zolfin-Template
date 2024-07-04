@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->text ('content');
             $table->string('excerpt');
             $table->foreignId('user_id');
+            $table->string('category_id');
             $table->integer('views');
             $table->timestamps();
         });

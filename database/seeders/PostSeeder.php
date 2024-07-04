@@ -21,11 +21,12 @@ class PostSeeder extends Seeder
         $faker = Factory::create();
         for($i = 0; $i < 20; $i++){
             post::create([
-                'title'=> $faker->realText(30),
+                'title'=> $faker->name(30),
                 'thumbnail'=> $faker->imageUrl(1000,600),
-                'excerpt' => $faker->paragraph(),
-                'content' =>$faker->text(500),
+                'excerpt' => $faker->title(),
+                'content' =>$faker->text(10),
                 'user_id' =>$faker->numberBetween(1,5),
+                'category_id' =>$faker->country(),
                 'views' =>$faker->numberBetween(1,5),
                 'slug' => $faker->slug()
               ]);

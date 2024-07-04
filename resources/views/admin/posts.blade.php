@@ -47,11 +47,13 @@
                   <tr>
                     <td> {{$post->id}} </td>
                     <td class="py-1">
-                      <img class="thumb-image" src="{{$post->thumbnail}}" alt="image" />
+                      <img class="thumb-image" src="{{route('home')}}/storage/image/{{$post->thumbnail}}" alt="image" />
                     </td>
                     <td> {{$post->title}} </td>
-                    <td> {{$post->title}} </td>
-                    <td> {{$post->slug}} </td>
+                    <td> {{$post->category}} </td>
+                    <td> {{$post->excerpt}} </td>
+                    <td> {{$post->category_id}}</td>
+                    <td> {{$post->content}}</td>
                     <td> {{$post->views}} </td>
                     <td> {{date('F d,Y',strtotime($post->updated_at))}} </td>
                     <td>
