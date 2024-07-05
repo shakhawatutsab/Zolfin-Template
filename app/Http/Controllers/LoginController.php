@@ -19,20 +19,30 @@ class LoginController extends Controller
         $information = $request->validate([
             "name" =>"required|max:200",
             "username" =>"required",
-            "photo" =>"required",
+            "photo" =>"required|image|mimes:png,jpg",
             "email" =>"required|email|unique:users",
             "password"=> "required|min:8",
         ]);
 
-        if($user = User::create($information)){
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->username = $request->username;
+
+        $photo_name = time().'-'. $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->storeAs('/public/image',$photo_name);
+
+        $user->photo = $photo_name;
+        $user->email = $request->email;
+
+        $user->password = bcrypt($request->password);
+
+        if( $user->save() ){
 
             Auth::attempt($information);
             return redirect('/dashboard')->with('message','Registration successful');
 
         };
-
-
-
 
 
     }
