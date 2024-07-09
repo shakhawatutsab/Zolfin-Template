@@ -26,7 +26,7 @@ class PostController extends Controller
             'title' => "Create new post"
         ]);
     }
-    public function post(){
+    public function index(){
 
         $keyword = request('search');
         $title = "All Posts";
@@ -47,6 +47,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request -> validate([
             'title' =>'required',
             'thumbnail' => 'required|image|mimes:jpg,bmp,png',
@@ -71,7 +72,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('admin-posts')->with('message','Post published!');
+        return redirect()->route('posts.index')->with('message','Post published!');
 
     }
 
@@ -112,7 +113,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Post $post)
+    public function destroy(Post $post)
     {
         $post->delete();
 

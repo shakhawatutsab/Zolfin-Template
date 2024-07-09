@@ -15,7 +15,7 @@
 
             <h4 class="card-title">Create new Post</h4>
             <hr>
-            <form class="forms-sample" method="POST" action="{{route('admin-create-store')}}" enctype="multipart/form-data">
+            <form class="forms-sample" method="POST" action="{{url('admin/posts/store')}}" enctype="multipart/form-data">
 
                 @csrf
                 <div class="form-group">

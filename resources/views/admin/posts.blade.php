@@ -20,7 +20,7 @@
                     <h2 class="card-title">All Posts</h2>
                 </div>
                 <div class="col">
-                    <form class="ml-auto search-form d-none d-md-block" method="GET" action="{{route('admin-posts')}}">
+                    <form class="ml-auto search-form d-none d-md-block" method="GET" action="{{route('posts.index')}}">
                         <div class="form-group">
                           <input class="input-group input-group-lg" value="{{ $keyword }}" name="search" type="search" class="form-control" placeholder="Search From Posts">
                         </div>
@@ -57,8 +57,8 @@
                     <td> {{$post->views}} </td>
                     <td> {{date('F d,Y',strtotime($post->updated_at))}} </td>
                     <td>
-                        <a class="btn btn-info" href="{{route('admin-edit-post',$post->id)}}">Edit</a>
-                        <form method="POST"action="{{route('admin-post-delete',$post->id)}} ">
+                        <a class="btn btn-info" href="{{route('posts.edit',$post->id)}}">Edit</a>
+                        <form method="POST"action="{{route('posts.destroy',$post->id)}} ">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger" type="submit">Delete</button>
